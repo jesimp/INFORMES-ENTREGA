@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+:root {
+  --bg: #020204;
+  --card: rgba(15, 18, 26, 0.85);
+  --accent: #00d4ff;
+  --neon-green: #39ff14;
+  --text: #e2e8f0;
+  --border: rgba(0, 212, 255, 0.2);
+}
+
+/* Fondo Matrix */
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  margin: 0;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden; /* Evita scroll innecesario en el cuerpo */
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1250px;
+  backdrop-filter: blur(8px);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 25px;
+}
+
+.accent-text {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+}
+
+/* --- RESUMEN EN GRUPOS DE 4 HORIZONTAL --- */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Fuerza 4 columnas */
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Ajuste para tablets/móviles */
+@media (max-width: 900px) {
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.summary-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.summary-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.summary-card h3 { margin: 0; font-size: 0.8rem; color: var(--accent); letter-spacing: 1px; }
+.summary-card p { margin: 5px 0 0 0; font-size: 1.6rem; font-weight: bold; color: var(--neon-green); }
+
+/* --- BUSCADOR --- */
+#input-busqueda {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--accent);
+  margin-bottom: 25px;
+  outline: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* --- TABLA CON DESPLAZAMIENTO HORIZONTAL --- */
+.table-container {
+  background: var(--card);
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  overflow-x: auto; /* Habilita el "rodado" a la derecha */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  -webkit-overflow-scrolling: touch; /* Scroll suave en móviles */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px; /* Obliga a la tabla a mantener su ancho para activar el scroll */
+}
+
+th {
+  background: rgba(0, 212, 255, 0.1);
+  padding: 18px;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+tbody tr:hover { background: rgba(0, 212, 255, 0.05); }
+
+.col-descripcion { color: var(--neon-green); font-weight: 700; }
+
+.col-total {
+  font-weight: 700;
+  text-align: center;
+  border-radius: 6px;
+  color: #000;
+  background: #fff;
+  min-width: 60px;
+}
+
+.input-entregado {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #444;
+  color: var(--accent);
+  padding: 8px;
+  width: 50px;
+  text-align: center;
+  border-radius: 5px;
+  font-family: 'Rajdhani';
+  font-weight: bold;
+}
+
+/* BOTÓN DE GUARDADO */
+.btn-save {
+  background: linear-gradient(135deg, #00d4ff 0%, #0055ff 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Rajdhani';
+  letter-spacing: 1px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
